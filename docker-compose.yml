@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  leathercraft-app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./app:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - REACT_APP_API_URL=http://localhost:8080
+      - PORT=8080
+    networks:
+      - leathercraft-network
+
+networks:
+  leathercraft-network:
+    driver: bridge

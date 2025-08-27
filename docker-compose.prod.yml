@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  leathercraft-app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: leathercraft-prod
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=production
+      - PORT=8080
+    networks:
+      - leathercraft-network
+
+networks:
+  leathercraft-network:
+    driver: bridge
