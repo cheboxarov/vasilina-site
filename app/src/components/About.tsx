@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import ScrollReveal from './ScrollReveal';
 
-import { HiOutlineSparkles, HiOutlineHand, HiOutlineUserGroup, IconType } from 'react-icons/hi';
+import { HiOutlineSparkles, HiOutlineHand, HiOutlineUserGroup } from 'react-icons/hi';
 
-type IconComponent = IconType;
+type IconComponent = React.ComponentType<{ size?: number | string; color?: string }>;
 
 const AboutSection = styled.section`
   padding: 100px 0;

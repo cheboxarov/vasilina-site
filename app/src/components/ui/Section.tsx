@@ -11,13 +11,13 @@ interface SectionProps {
 }
 
 const StyledSection = styled.section<{
-  padding?: string;
-  background?: string;
-  fullHeight?: boolean;
+  $padding?: string;
+  $background?: string;
+  $fullHeight?: boolean;
 }>`
-  padding: ${props => props.padding || '120px 0 80px 0'};
-  background: ${props => props.background || '#1a1a1a'};
-  ${props => props.fullHeight && 'height: 100vh; display: flex; align-items: center;'};
+  padding: ${props => props.$padding || '120px 0 80px 0'};
+  background: ${props => props.$background || '#1a1a1a'};
+  ${props => props.$fullHeight && 'height: 100vh; display: flex; align-items: center;'};
   position: relative;
   overflow: hidden;
 `;
@@ -34,9 +34,9 @@ const Section: React.FC<SectionProps> = ({
     <StyledSection
       id={id}
       className={className}
-      padding={padding}
-      background={background}
-      fullHeight={fullHeight}
+      $padding={padding}
+      $background={background}
+      $fullHeight={fullHeight}
     >
       {children}
     </StyledSection>

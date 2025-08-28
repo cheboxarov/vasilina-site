@@ -19,21 +19,7 @@ const GlobalStyles = createGlobalStyle`
       radial-gradient(circle at 20% 80%, rgba(210, 105, 30, 0.08) 0%, transparent 50%),
       radial-gradient(circle at 80% 20%, rgba(139, 69, 19, 0.08) 0%, transparent 50%),
       linear-gradient(135deg, #1a1a1a 0%, #141414 100%);
-    background-attachment: fixed;
     overflow-x: hidden;
-
-    /* Шумовая текстура для глубины */
-    &::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.015'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: -1;
-    }
   }
 
   /* Fluid typography */

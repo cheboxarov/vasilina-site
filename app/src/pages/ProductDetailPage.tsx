@@ -12,7 +12,7 @@ import {
   Container,
   Section
 } from '../components/ui';
-import { HiOutlineShoppingBag, HiOutlineArrowLeft, HiOutlineChat, HiOutlineHeart } from 'react-icons/hi';
+import { HiOutlineShoppingBag, HiOutlineArrowLeft, HiOutlineChat, HiOutlineHeart, HiOutlineTruck, HiOutlineReply, HiOutlineCreditCard, HiOutlineCash, HiOutlineDeviceMobile } from 'react-icons/hi';
 
 const PageHeader = styled.div`
   margin-bottom: 40px;
@@ -243,10 +243,21 @@ const InfoSectionTitle = styled.h3`
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 
   @media (max-width: 768px) {
     font-size: 20px;
   }
+`;
+
+const IconWrapper = styled.span`
+  color: #D2691E;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const InfoCard = styled.div`
@@ -276,7 +287,7 @@ const ProductDetailPage: React.FC = () => {
             <h1 style={{ color: '#f5f5f5', marginBottom: '16px' }}>Товар не найден</h1>
             <p style={{ color: '#ccc', marginBottom: '24px' }}>Похоже, такого товара нет в нашем каталоге.</p>
             <Button as="link" to="/products">
-              <HiOutlineArrowLeft />
+              {React.createElement(HiOutlineArrowLeft as any)}
               Вернуться в каталог
             </Button>
           </PageHeader>
@@ -377,17 +388,17 @@ const ProductDetailPage: React.FC = () => {
 
             <ActionButtons>
               <Button variant="primary" onClick={handleAddToCart}>
-                <HiOutlineShoppingBag />
+                {React.createElement(HiOutlineShoppingBag as any)}
                 Оформить заказ
               </Button>
 
               <Button variant="secondary" onClick={toggleFavorite}>
-                <HiOutlineHeart />
+                {React.createElement(HiOutlineHeart as any)}
                 {isFavorite ? 'В избранном' : 'В избранное'}
               </Button>
 
               <Button as="link" to="/products" variant="secondary">
-                <HiOutlineArrowLeft />
+                {React.createElement(HiOutlineArrowLeft as any)}
                 Назад к каталогу
               </Button>
             </ActionButtons>
@@ -459,7 +470,7 @@ const ProductDetailPage: React.FC = () => {
             </ReviewsList>
           ) : (
             <NoReviews>
-              <HiOutlineChat size={48} style={{ marginBottom: '16px', opacity: 0.5 }} />
+              {React.createElement(HiOutlineChat as any, { size: 48, style: { marginBottom: '16px', opacity: 0.5 } })}
               <p>Отзывов пока нет. Будьте первым!</p>
             </NoReviews>
           )}
@@ -477,7 +488,12 @@ const ProductDetailPage: React.FC = () => {
           }
         } as any}>
           <div>
-            <InfoSectionTitle>🚚 Доставка</InfoSectionTitle>
+            <InfoSectionTitle>
+              <IconWrapper>
+                <HiOutlineTruck />
+              </IconWrapper>
+              Доставка
+            </InfoSectionTitle>
             <InfoCard>
               <p style={{ color: '#ccc', marginBottom: '12px', lineHeight: '1.6' }}>
                 <strong style={{ color: '#f5f5f5' }}>По Москве:</strong> от 300₽ (курьер)
@@ -495,7 +511,12 @@ const ProductDetailPage: React.FC = () => {
           </div>
 
           <div>
-            <InfoSectionTitle>↩️ Возврат</InfoSectionTitle>
+            <InfoSectionTitle>
+              <IconWrapper>
+                <HiOutlineReply />
+              </IconWrapper>
+              Возврат
+            </InfoSectionTitle>
             <InfoCard>
               <p style={{ color: '#ccc', marginBottom: '12px', lineHeight: '1.6' }}>
                 Возврат товара возможен в течение <strong style={{ color: '#f5f5f5' }}>14 дней</strong> с момента получения.
@@ -510,12 +531,37 @@ const ProductDetailPage: React.FC = () => {
           </div>
 
           <div>
-            <InfoSectionTitle>💳 Оплата</InfoSectionTitle>
+            <InfoSectionTitle>
+              <IconWrapper>
+                <HiOutlineCreditCard />
+              </IconWrapper>
+              Оплата
+            </InfoSectionTitle>
             <InfoCard>
-              <p style={{ color: '#ccc', marginBottom: '8px' }}>💵 Наличными при получении</p>
-              <p style={{ color: '#ccc', marginBottom: '8px' }}>💳 Банковской картой</p>
-              <p style={{ color: '#ccc', marginBottom: '8px' }}>🏦 Переводом на карту</p>
-              <p style={{ color: '#ccc', marginBottom: '12px' }}>📱 Оплата через СБП</p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                <IconWrapper style={{ fontSize: '16px' }}>
+                  <HiOutlineCash />
+                </IconWrapper>
+                <span style={{ color: '#ccc' }}>Наличными при получении</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                <IconWrapper style={{ fontSize: '16px' }}>
+                  <HiOutlineCreditCard />
+                </IconWrapper>
+                <span style={{ color: '#ccc' }}>Банковской картой</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                <IconWrapper style={{ fontSize: '16px' }}>
+                  <HiOutlineCreditCard />
+                </IconWrapper>
+                <span style={{ color: '#ccc' }}>Переводом на карту</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+                <IconWrapper style={{ fontSize: '16px' }}>
+                  <HiOutlineDeviceMobile />
+                </IconWrapper>
+                <span style={{ color: '#ccc' }}>Оплата через СБП</span>
+              </div>
               <p style={{ color: '#888', fontSize: '14px' }}>
                 Все платежи защищены и безопасны
               </p>

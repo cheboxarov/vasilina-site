@@ -8,10 +8,11 @@ const RatingContainer = styled.div`
   gap: 4px;
 `;
 
-const StarIcon = styled(HiOutlineStar)<{ filled: boolean }>`
+const Star = styled.span<{ $filled: boolean }>`
+  display: inline-flex;
   width: 14px;
   height: 14px;
-  color: ${props => props.filled ? '#D2691E' : '#555'};
+  color: ${props => (props.$filled ? '#D2691E' : '#555')};
   transition: color 0.2s ease;
 `;
 
@@ -61,14 +62,9 @@ const RatingStars: React.FC<RatingStarsProps> = ({
         }
 
         return (
-          <StarIcon
-            key={index}
-            filled={filled}
-            style={{
-              width: `${starSize[size]}px`,
-              height: `${starSize[size]}px`
-            }}
-          />
+          <Star key={index} $filled={filled} style={{ width: `${starSize[size]}px`, height: `${starSize[size]}px` }}>
+            {React.createElement(HiOutlineStar as any, { size: starSize[size] })}
+          </Star>
         );
       })}
 

@@ -65,8 +65,8 @@ const Nav = styled.nav`
   }
 `;
 
-const NavLink = styled(Link)<{ active: boolean }>`
-  color: ${props => props.active ? '#D2691E' : '#f5f5f5'};
+const NavLink = styled(Link)<{ $active: boolean }>`
+  color: ${props => props.$active ? '#D2691E' : '#f5f5f5'};
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s ease;
@@ -85,7 +85,7 @@ const NavLink = styled(Link)<{ active: boolean }>`
   &::after {
     content: '';
     position: absolute;
-    width: ${props => props.active ? '100%' : '0'};
+    width: ${props => props.$active ? '100%' : '0'};
     height: 2px;
     bottom: 0;
     left: 15px;
@@ -129,25 +129,25 @@ const Header: React.FC = () => {
         <Nav>
           <NavLink
             to="/"
-            active={isActive('/')}
+            $active={isActive('/')}
           >
             Главная
           </NavLink>
           <NavLink
             to="/products"
-            active={isActive('/products')}
+            $active={isActive('/products')}
           >
             Каталог
           </NavLink>
           <NavLink
             to="/about"
-            active={isActive('/about')}
+            $active={isActive('/about')}
           >
             О нас
           </NavLink>
           <NavLink
             to="/contacts"
-            active={isActive('/contacts')}
+            $active={isActive('/contacts')}
           >
             Контакты
           </NavLink>

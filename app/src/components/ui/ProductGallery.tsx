@@ -6,7 +6,7 @@ import { ProductImage } from '../../types';
 const GalleryContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 400px;
+  height: clamp(260px, 40vw, 400px);
   overflow: hidden;
   border-radius: 12px;
 `;

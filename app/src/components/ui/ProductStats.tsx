@@ -25,11 +25,11 @@ const StatIcon = styled.span`
   height: 14px;
 `;
 
-const StockStatus = styled.div<{ inStock: boolean }>`
+const StockStatus = styled.div<{ $inStock: boolean }>`
   display: flex;
   align-items: center;
   gap: 4px;
-  color: ${props => props.inStock ? '#4CAF50' : '#F44336'};
+  color: ${props => props.$inStock ? '#4CAF50' : '#F44336'};
   font-size: 12px;
   font-weight: 500;
 `;
@@ -56,15 +56,15 @@ const ProductStats: React.FC<ProductStatsProps> = ({
   return (
     <StatsContainer>
       <StatItem>
-        <StatIcon>
-          <HiOutlineShoppingBag />
-        </StatIcon>
+        <StatIcon>{React.createElement(HiOutlineShoppingBag as any)}</StatIcon>
         {orderCount} заказов
       </StatItem>
 
-      <StockStatus inStock={inStock}>
+      <StockStatus $inStock={inStock}>
         <StockIcon>
-          {inStock ? <HiOutlineCheckCircle /> : <HiOutlineXCircle />}
+          {inStock
+            ? React.createElement(HiOutlineCheckCircle as any)
+            : React.createElement(HiOutlineXCircle as any)}
         </StockIcon>
         {inStock
           ? (stockCount ? `${stockCount} в наличии` : 'В наличии')

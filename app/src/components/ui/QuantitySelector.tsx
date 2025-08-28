@@ -131,7 +131,7 @@ const QuantitySelector: React.FC<QuantitySelectorProps> = ({
           onClick={handleDecrement}
           disabled={quantity <= 1}
         >
-          <HiOutlineMinus />
+          {React.createElement(HiOutlineMinus as any)}
         </QuantityButton>
 
         <QuantityInput
@@ -146,7 +146,7 @@ const QuantitySelector: React.FC<QuantitySelectorProps> = ({
           onClick={handleIncrement}
           disabled={quantity >= effectiveMaxQuantity}
         >
-          <HiOutlinePlus />
+          {React.createElement(HiOutlinePlus as any)}
         </QuantityButton>
       </QuantityControls>
 

@@ -14,11 +14,12 @@ import {
   HiOutlineChat,
   HiOutlinePaperAirplane,
   HiOutlineChatAlt2,
-  IconType
+  HiOutlineGlobeAlt,
+  HiOutlinePhotograph,
+  HiOutlineCash
 } from 'react-icons/hi';
-import { FaVk, FaInstagram, FaTelegramPlane, FaWhatsapp } from 'react-icons/fa';
 
-type IconComponent = IconType;
+type IconComponent = React.ComponentType<{ size?: number | string; color?: string }>;
 
 
 const ContactsSection = styled.section`
@@ -693,9 +694,18 @@ const Contacts: React.FC = () => {
       title: 'Оплата',
       content: (
         <>
-          <p>💵 Наличными при получении</p>
-          <p>💳 Банковской картой</p>
-          <p>🏦 Переводом на карту</p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+            <HiOutlineCash style={{ color: '#D2691E', fontSize: '16px' }} />
+            <span>Наличными при получении</span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+            <HiOutlineCreditCard style={{ color: '#D2691E', fontSize: '16px' }} />
+            <span>Банковской картой</span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+            <HiOutlineCreditCard style={{ color: '#D2691E', fontSize: '16px' }} />
+            <span>Переводом на карту</span>
+          </div>
           <p style={{ fontSize: '12px', opacity: 0.7 }}>Безопасная оплата</p>
         </>
       )
@@ -736,7 +746,7 @@ const Contacts: React.FC = () => {
           <SidePanel>
             <ScrollReveal delay={0.3}>
               <MapSection>
-                <MapIcon><HiOutlineLocationMarker /></MapIcon>
+                <MapIcon>{React.createElement(HiOutlineLocationMarker as any)}</MapIcon>
                 <MapTitle>🏢 Мастерская Василины</MapTitle>
                 <MapAddress>
                   ул. Кожевенная, д. 15<br />
@@ -748,7 +758,7 @@ const Contacts: React.FC = () => {
                   whileTap={{ scale: 0.95 }}
                   onClick={() => window.open('https://maps.google.com/?q=ул. Кожевенная, д. 15, Москва', '_blank')}
                 >
-                  <HiOutlineLocationMarker /> Открыть в Google Maps
+                  {React.createElement(HiOutlineLocationMarker as any)} Открыть в Google Maps
                 </MapButton>
               </MapSection>
             </ScrollReveal>
@@ -756,7 +766,7 @@ const Contacts: React.FC = () => {
             <ScrollReveal delay={0.5}>
               <ContactForm>
                 <FormHeader>
-                  <FormTitle><HiOutlineChat /> Напишите нам</FormTitle>
+                  <FormTitle>{React.createElement(HiOutlineChat as any)} Напишите нам</FormTitle>
                   <FormSubtitle>
                     Оставьте сообщение и мы свяжемся с вами в ближайшее время
                   </FormSubtitle>
@@ -765,7 +775,7 @@ const Contacts: React.FC = () => {
                   <FormGrid>
                     <FormGroup>
                       <Label htmlFor="name">
-                        <HiOutlineUser /> Ваше имя *
+                        {React.createElement(HiOutlineUser as any)} Ваше имя *
                       </Label>
                       <InputWrapper>
                         <Input
@@ -777,12 +787,12 @@ const Contacts: React.FC = () => {
                           placeholder="Иван Иванов"
                           required
                         />
-                        <InputIcon><HiOutlineUser /></InputIcon>
+                        <InputIcon>{React.createElement(HiOutlineUser as any)}</InputIcon>
                       </InputWrapper>
                     </FormGroup>
                     <FormGroup>
                       <Label htmlFor="email">
-                        <HiOutlineMail /> Email *
+                        {React.createElement(HiOutlineMail as any)} Email *
                       </Label>
                       <InputWrapper>
                         <Input
@@ -794,13 +804,13 @@ const Contacts: React.FC = () => {
                           placeholder="ivan@example.com"
                           required
                         />
-                        <InputIcon><HiOutlineMail /></InputIcon>
+                        <InputIcon>{React.createElement(HiOutlineMail as any)}</InputIcon>
                       </InputWrapper>
                     </FormGroup>
                   </FormGrid>
                   <FormGroup>
                     <Label htmlFor="phone">
-                      <HiOutlineDeviceMobile /> Телефон
+                      {React.createElement(HiOutlineDeviceMobile as any)} Телефон
                     </Label>
                     <InputWrapper>
                       <Input
@@ -811,12 +821,12 @@ const Contacts: React.FC = () => {
                         onChange={handleInputChange}
                         placeholder="+7 (___) ___-__-__"
                       />
-                      <InputIcon><HiOutlineDeviceMobile /></InputIcon>
+                      <InputIcon>{React.createElement(HiOutlineDeviceMobile as any)}</InputIcon>
                     </InputWrapper>
                   </FormGroup>
                   <FormGroup>
                     <Label htmlFor="message">
-                      <HiOutlineChat /> Сообщение *
+                      {React.createElement(HiOutlineChat as any)} Сообщение *
                     </Label>
                     <InputWrapper>
                       <TextArea
@@ -827,7 +837,7 @@ const Contacts: React.FC = () => {
                         placeholder="Расскажите о вашем проекте, пожеланиях или задайте вопрос..."
                         required
                       />
-                      <InputIcon style={{ top: '16px' }}><HiOutlineChat /></InputIcon>
+                      <InputIcon style={{ top: '16px' }}>{React.createElement(HiOutlineChat as any)}</InputIcon>
                     </InputWrapper>
                   </FormGroup>
                   <SubmitButton
@@ -838,11 +848,11 @@ const Contacts: React.FC = () => {
                   >
                     {isSubmitting ? (
                       <>
-                        <HiOutlineChatAlt2 /> Отправка...
+                        {React.createElement(HiOutlineChatAlt2 as any)} Отправка...
                       </>
                     ) : (
                       <>
-                        <HiOutlinePaperAirplane /> Отправить сообщение
+                        {React.createElement(HiOutlinePaperAirplane as any)} Отправить сообщение
                       </>
                     )}
                   </SubmitButton>
@@ -866,7 +876,7 @@ const Contacts: React.FC = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
-                <FaVk />
+                <HiOutlineGlobeAlt />
               </SocialLink>
               <SocialLink
                 href="https://instagram.com/vasilina_leather"
@@ -875,7 +885,7 @@ const Contacts: React.FC = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
-                <FaInstagram />
+                <HiOutlinePhotograph />
               </SocialLink>
               <SocialLink
                 href="https://t.me/vasilina_leather"
@@ -884,7 +894,7 @@ const Contacts: React.FC = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
-                <FaTelegramPlane />
+                <HiOutlineChat />
               </SocialLink>
               <SocialLink
                 href="https://wa.me/74951234567"
@@ -893,7 +903,7 @@ const Contacts: React.FC = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
-                <FaWhatsapp />
+                <HiOutlineDeviceMobile />
               </SocialLink>
             </SocialLinks>
           </SocialSection>

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { HiOutlineViewGrid } from 'react-icons/hi';
+import { HiOutlineViewGrid, HiOutlineSparkles, HiOutlineHand, HiOutlineShieldCheck, HiOutlineTruck, HiOutlineCreditCard, HiOutlineReply } from 'react-icons/hi';
 
 const HeroSection = styled.section`
   height: 100vh;
@@ -19,8 +19,9 @@ const HeroSection = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text fill="%23D2691E" font-size="8" opacity="0.03">LEATHER</text></svg>');
-    opacity: 0.3;
+    background: radial-gradient(circle at 20% 30%, rgba(210, 105, 30, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(139, 69, 19, 0.05) 0%, transparent 40%);
+    opacity: 1;
   }
 `;
 
@@ -44,14 +45,14 @@ const HeroContent = styled.div`
   position: relative;
 
   h1 {
-    font-size: 48px;
+    font-size: clamp(40px, 6vw, 72px);
     margin-bottom: 20px;
     color: #f5f5f5;
     font-weight: bold;
   }
 
   p {
-    font-size: 20px;
+    font-size: clamp(16px, 2.2vw, 20px);
     margin-bottom: 40px;
     color: #ccc;
     max-width: 600px;
@@ -111,6 +112,111 @@ const CTAButton = styled(Link)`
   }
 `;
 
+const SecondaryButton = styled(Link)`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #f5f5f5;
+  padding: 18px 32px;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  border: 1px solid #444;
+
+  &:hover {
+    border-color: #D2691E;
+    color: #D2691E;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(210, 105, 30, 0.25);
+  }
+`;
+
+const BadgesRow = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+`;
+
+const Badge = styled.span`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f5f5f5;
+  font-size: 12px;
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+`;
+
+const BadgeIcon = styled.span`
+  display: inline-flex;
+  color: #D2691E;
+  font-size: 14px;
+`;
+
+const CTARow = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+`;
+
+const TrustBar = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+  margin-top: 18px;
+  color: #bbb;
+  font-size: 14px;
+  opacity: 0.9;
+  flex-wrap: wrap;
+`;
+
+const TrustItem = styled.div`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+const TrustIcon = styled.span`
+  display: inline-flex;
+  color: #D2691E;
+  font-size: 16px;
+`;
+
+const Orb = styled.div`
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.25;
+  pointer-events: none;
+`;
+
+const OrbOne = styled(Orb)`
+  width: 280px;
+  height: 280px;
+  background: #D2691E;
+  top: 10%;
+  left: -80px;
+`;
+
+const OrbTwo = styled(Orb)`
+  width: 340px;
+  height: 340px;
+  background: #8B4513;
+  bottom: 5%;
+  right: -100px;
+`;
+
 const Hero: React.FC = () => {
   const parallaxRef = useRef<HTMLDivElement>(null);
 
@@ -141,33 +247,66 @@ const Hero: React.FC = () => {
             transition={{ duration: 1, ease: "easeOut" }}
           >
             <HeroContent>
+              <BadgesRow>
+                <Badge>
+                  <BadgeIcon>{React.createElement(HiOutlineSparkles)}</BadgeIcon>
+                  Премиум кожа
+                </Badge>
+                <Badge>
+                  <BadgeIcon>{React.createElement(HiOutlineHand)}</BadgeIcon>
+                  Ручная работа
+                </Badge>
+                <Badge>
+                  <BadgeIcon>{React.createElement(HiOutlineShieldCheck)}</BadgeIcon>
+                  Гарантия качества
+                </Badge>
+              </BadgesRow>
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                Искусство в каждой детали
+                Мастерская <span style={{ color: '#D2691E' }}>Василины</span>
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                Уникальные кожаные изделия, созданные с любовью и вниманием к деталям
+                Искусство в каждой детали • Ручная работа • Натуральная кожа высшего качества
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                <CTAButton to="/products">
-                  <HiOutlineViewGrid />
-                  Посмотреть каталог
-                </CTAButton>
+                <CTARow>
+                  <CTAButton to="/products">
+                    <HiOutlineViewGrid />
+                    Посмотреть каталог
+                  </CTAButton>
+                  <SecondaryButton to="/about">Узнать о мастерской</SecondaryButton>
+                </CTARow>
               </motion.div>
+              <TrustBar>
+                <TrustItem>
+                  <TrustIcon>{React.createElement(HiOutlineTruck)}</TrustIcon>
+                  Доставка по РФ
+                </TrustItem>
+                <TrustItem>
+                  <TrustIcon>{React.createElement(HiOutlineCreditCard)}</TrustIcon>
+                  Удобная оплата
+                </TrustItem>
+                <TrustItem>
+                  <TrustIcon>{React.createElement(HiOutlineReply)}</TrustIcon>
+                  14 дней возврат
+                </TrustItem>
+              </TrustBar>
             </HeroContent>
           </motion.div>
         </Container>
+        <OrbOne />
+        <OrbTwo />
       </ParallaxContainer>
     </HeroSection>
   );
